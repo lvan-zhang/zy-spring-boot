@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloWorldController {
-//    TODO:
     @Value("${info.app.name}")
     private String appName;
 
