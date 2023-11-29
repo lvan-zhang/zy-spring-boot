@@ -1,6 +1,8 @@
 package com.zhangyu.controller;
 
-import com.zhangyu.model.User;
+import com.zhangyu.mapper.UserMapper;
+import com.zhangyu.model.UserForJpa;
+import com.zhangyu.model.UserForMybatis;
 import com.zhangyu.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +18,16 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("getAll")
-    public List<User> getAllUsers() {
+    @Autowired
+    private UserMapper userMapper;
+
+    @GetMapping("getAllForJpa")
+    public List<UserForJpa> getAllUsersForJpa() {
         return userRepository.findAll();
+    }
+
+    @GetMapping("getAllForMybatis")
+    public List<UserForMybatis> getAllUsersForMybatis() {
+        return userMapper.findAll();
     }
 }
