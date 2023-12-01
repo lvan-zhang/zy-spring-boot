@@ -1,5 +1,6 @@
 package com.zhangyu.controller;
 
+import com.zhangyu.config.ApiResponse;
 import com.zhangyu.mapper.UserMapper;
 import com.zhangyu.model.UserForJpa;
 import com.zhangyu.model.UserForMybatis;
@@ -26,13 +27,19 @@ public class UserController {
 
     @GetMapping("getAllForJpa")
     @Operation(summary = "获取用户信息-jpa方式", description = "以jpa的方式获取用户")
-    public List<UserForJpa> getAllUsersForJpa() {
-        return userRepository.findAll();
+    public ApiResponse<Object> getAllUsersForJpa() {
+        List<UserForJpa> userList = userRepository.findAll();
+        return ApiResponse.success(userList);
     }
 
     @GetMapping("getAllForMybatis")
     @Operation(summary = "获取用户信息-Mybatis方式", description = "以Mybatis的方式获取用户")
     public List<UserForMybatis> getAllUsersForMybatis() {
         return userMapper.findAll();
+    }
+
+    @GetMapping("fail")
+    public ApiResponse<Object> getFailTest () {
+        return ApiResponse.fail(404, "请求失败");
     }
 }

@@ -10,7 +10,7 @@ public class HelloWorldController {
     private String appName;
 
     @RequestMapping("/hello")
-    public String index(){
+    public String index() {
         return this.appName;
     }
 }
