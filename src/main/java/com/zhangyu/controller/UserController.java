@@ -1,6 +1,9 @@
 package com.zhangyu.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zhangyu.config.ApiResponse;
+import com.zhangyu.config.CommonPage;
 import com.zhangyu.mapper.UserMapper;
 import com.zhangyu.model.UserForJpa;
 import com.zhangyu.model.UserForMybatis;
@@ -32,10 +35,20 @@ public class UserController {
         return ApiResponse.success(userList);
     }
 
+//    @GetMapping("getAllForMybatis")
+//    @Operation(summary = "获取用户信息-Mybatis方式", description = "以Mybatis的方式获取用户")
+//    public List<UserForMybatis> getAllUsersForMybatis() {
+//        PageHelper.startPage(2, 5);
+//        return userMapper.findAll();
+//    }
     @GetMapping("getAllForMybatis")
     @Operation(summary = "获取用户信息-Mybatis方式", description = "以Mybatis的方式获取用户")
-    public List<UserForMybatis> getAllUsersForMybatis() {
-        return userMapper.findAll();
+    public ApiResponse<Object> getAllUsersForMybatis() {
+        PageHelper.startPage(2, 5);
+        List<UserForMybatis> userList = userMapper.findAll();
+        PageInfo pageInfo = new PageInfo(userList);
+        System.out.println(pageInfo);
+        return ApiResponse.success(CommonPage.restPage(userList));
     }
 
     @GetMapping("fail")
