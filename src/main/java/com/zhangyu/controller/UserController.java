@@ -1,7 +1,6 @@
 package com.zhangyu.controller;
 
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.zhangyu.config.ApiResponse;
 import com.zhangyu.config.CommonPage;
 import com.zhangyu.mapper.UserMapper;
@@ -44,10 +43,8 @@ public class UserController {
     @GetMapping("getAllForMybatis")
     @Operation(summary = "获取用户信息-Mybatis方式", description = "以Mybatis的方式获取用户")
     public ApiResponse<Object> getAllUsersForMybatis() {
-        PageHelper.startPage(2, 5);
+        PageHelper.startPage(1, 5);
         List<UserForMybatis> userList = userMapper.findAll();
-        PageInfo pageInfo = new PageInfo(userList);
-        System.out.println(pageInfo);
         return ApiResponse.success(CommonPage.restPage(userList));
     }
 
