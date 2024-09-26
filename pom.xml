@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zhangyu</groupId>
+    <artifactId>zy-spring-boot</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>zy-spring-boot</name>
+    <description>zy-spring-boot</description>
+    <packaging>pom</packaging>
+    <url/>
+    <licenses>
+        <license/>
+    </licenses>
+    <developers>
+        <developer/>
+    </developers>
+    <scm>
+        <connection/>
+        <developerConnection/>
+        <tag/>
+        <url/>
+    </scm>
+    <properties>
+        <java.version>17</java.version>
+    </properties>
+    <modules>
+        <module>zy-api-response</module>
+        <module>zy-banner</module>
+        <module>zy-command-line</module>
+        <module>zy-cors</module>
+        <module>zy-docker</module>
+        <module>zy-endpoint</module>
+        <module>zy-env</module>
+        <module>zy-file-upload</module>
+        <module>zy-hello-world</module>
+        <module>zy-log4j</module>
+        <module>zy-mail</module>
+        <module>zy-mybatis-annotation</module>
+        <module>zy-mybatis-xml</module>
+        <module>zy-mysql-jpa</module>
+        <module>zy-rabbitmq</module>
+        <module>zy-redis</module>
+        <module>zy-scheduler-task</module>
+        <module>zy-swagger</module>
+        <module>zy-web-mvc</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
