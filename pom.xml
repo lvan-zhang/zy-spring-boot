@@ -45,6 +45,7 @@
         <module>zy-scheduler-task</module>
         <module>zy-swagger</module>
         <module>zy-web-mvc</module>
+        <module>zy-captcha</module>
     </modules>
 
     <build>
