@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zhangyu.mapper.UserMapper" >
+<!--    resultMap: 定义表中数据与 POJO 成员的映射关系，比如将下划线的命名映射成驼峰-->
+<!--    会以namespace 和 id 在mapper 中查询具体的方法-->
     <resultMap id="BaseResultMap" type="com.zhangyu.model.User" >
         <id column="id" property="id" jdbcType="BIGINT" />
         <result column="userName" property="userName" jdbcType="VARCHAR" />
@@ -8,11 +10,15 @@
         <result column="user_sex" property="userSex" javaType="com.zhangyu.enums.UserSexEnum"/>
         <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
     </resultMap>
-    
+
+<!--    sql 标签定义通用的 sql 语句片段，通过<include refid="xxx"/>方式引入，避免写重复代码-->
     <sql id="Base_Column_List" >
         id, userName, passWord, user_sex, nick_name, email
     </sql>
 
+<!--    resultType 表示返回对象的数据类型-->
+<!--    parameterType 表示传入的数据对象-->
+<!--    id  唯一标识，要与命名空间（抽象方法）中定义的方法名称一致-->
     <select id="getAll" resultMap="BaseResultMap"  >
        SELECT 
        <include refid="Base_Column_List" />

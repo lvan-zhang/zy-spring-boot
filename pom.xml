@@ -46,6 +46,9 @@
         <module>zy-swagger</module>
         <module>zy-web-mvc</module>
         <module>zy-captcha</module>
+        <module>zy-security</module>
+        <module>zy-thymeleaf</module>
+        <module>zy-register-login</module>
     </modules>
 
     <build>
