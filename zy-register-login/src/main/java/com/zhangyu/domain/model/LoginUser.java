@@ -1,5 +1,13 @@
 package com.zhangyu.domain.model;
 
+import com.zhangyu.domain.entity.SysUser;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
 import java.util.Set;
 
 /**
@@ -7,7 +15,10 @@ import java.util.Set;
  * 
  * @author ruoyi
  */
-public class LoginUser
+@Getter
+@Setter
+@ToString
+public class LoginUser implements UserDetails
 {
     private static final long serialVersionUID = 1L;
 
@@ -57,7 +68,34 @@ public class LoginUser
     private String os;
 
     /**
+     * 用户信息
+     */
+    private SysUser user;
+
+    /**
      * 权限列表
      */
     private Set<String> permissions;
+
+    public LoginUser(Long userId, Long deptId, SysUser user)
+    {
+        this.userId = userId;
+        this.deptId = deptId;
+        this.user = user;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return user.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return user.getUsername();
+    }
 }

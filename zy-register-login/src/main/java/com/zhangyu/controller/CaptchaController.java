@@ -1,5 +1,6 @@
 package com.zhangyu.controller;
 
+import com.zhangyu.constant.CacheConstants;
 import com.zhangyu.utils.CaptchaEasyUtils;
 import com.zhangyu.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,6 @@ import java.util.Map;
 @RestController
 public class CaptchaController {
 
-    private String captchaRedisName = "zySpringBoot-";
-
     @Autowired
     private CaptchaEasyUtils captchaEasyUtils;
 
@@ -23,7 +22,7 @@ public class CaptchaController {
     @GetMapping("/captchaImage")
     public Map getCaptcha () throws IOException {
         Map captchaInfo = captchaEasyUtils.createLineCaptcha();
-        redisUtil.set(captchaRedisName + captchaInfo.get("uuid"), (String) captchaInfo.get("text"));
+        redisUtil.set(CacheConstants.CAPTCHA_CODE_KEY + captchaInfo.get("uuid"), (String) captchaInfo.get("text"));
         return captchaInfo;
     }
 }

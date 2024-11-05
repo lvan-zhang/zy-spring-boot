@@ -22,7 +22,7 @@ public class CaptchaEasyUtils {
      */
     public Map createLineCaptcha() throws IOException {
         // 创建文字验证码
-        SpecCaptcha captcha = new SpecCaptcha(200, 100, 4);
+        SpecCaptcha captcha = new SpecCaptcha(100, 38, 4);
 
         // 获取验证码的内容
         String captchaText = captcha.text();

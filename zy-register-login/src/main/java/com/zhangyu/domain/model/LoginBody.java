@@ -2,6 +2,7 @@ package com.zhangyu.domain.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * 用户登录对象
@@ -10,6 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@ToString
 public class LoginBody
 {
     /**

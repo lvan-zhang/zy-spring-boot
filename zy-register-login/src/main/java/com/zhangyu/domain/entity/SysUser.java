@@ -2,6 +2,7 @@ package com.zhangyu.domain.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Date;
 
@@ -12,10 +13,11 @@ import java.util.Date;
  */
 @Setter
 @Getter
-public class SysUser
+@ToString
+public class SysUser extends BaseEntity
 {
     /** 用户ID */
-    private String userId;
+    private Long userId;
 
     /** 用户账号 */
     private String username;

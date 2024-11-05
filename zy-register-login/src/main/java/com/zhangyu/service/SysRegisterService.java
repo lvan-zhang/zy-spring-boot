@@ -1,5 +1,6 @@
 package com.zhangyu.service;
 
+import com.zhangyu.constant.CacheConstants;
 import com.zhangyu.constant.UserConstants;
 import com.zhangyu.domain.entity.SysUser;
 import com.zhangyu.domain.model.RegisterBody;
@@ -12,8 +13,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SysRegisterService {
-
-    private String captchaRedisName = "zySpringBoot-";
 
     @Autowired
     private SysUserMapper sysUserMapper;
@@ -66,11 +65,10 @@ public class SysRegisterService {
     }
 
     public String validateCaptcha (String uuid, String captchaCode) {
-        String msg = "";
-        String validKey = captchaRedisName + uuid;
+        String msg = null;
+        String validKey = CacheConstants.CAPTCHA_CODE_KEY + uuid;
         String validCode = (String) redisUtil.get(validKey);
-        System.out.println(validCode + "||" + captchaCode);
-        if (StringUtils.isEmpty(validCode)) {
+        if (StringUtils.isEmpty(captchaCode)) {
             msg = "请输入验证码";
         } else if (!validCode.equalsIgnoreCase(captchaCode)) {
             msg = "验证码不正确";
